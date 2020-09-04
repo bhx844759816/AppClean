@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="PLATFORM" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="1.8" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/../../../lib/CoreLib/CoreLib" />
+            <option value="$PROJECT_DIR$/../../../lib/ThirdSdk/alinewpay2.0" />
+            <option value="$PROJECT_DIR$/../../../lib/ThirdSdk/messagelib" />
+            <option value="$PROJECT_DIR$/../../../lib/ThirdSdk/wxpay" />
+            <option value="$PROJECT_DIR$/../../../lib/widget/webwidget" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/../../widget/AMapTrack" />
+            <option value="$PROJECT_DIR$/../../widget/Umeng_LoginShare" />
+            <option value="$PROJECT_DIR$/../../widget/agoralib" />
+            <option value="$PROJECT_DIR$/../../widget/base_product" />
+            <option value="$PROJECT_DIR$/../../widget/library" />
+            <option value="$PROJECT_DIR$/../../widget/wifiCameracheck" />
+            <option value="$PROJECT_DIR$/../../widget/xrecyclerview" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

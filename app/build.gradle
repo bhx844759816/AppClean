@@ -1,0 +1,111 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        applicationId "com.appclean.main"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        ndk { abiFilters 'armeabi-v7a' }
+        multiDexEnabled true
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "L8W7p57UbZ76zDwD4I1nY5",
+                GETUI_APP_KEY   : "nLy9p0TxNmAbVTDRH5j2J2",
+                GETUI_APP_SECRET: "1mopijmzit8g8zbHlzg6j7",
+                XIAOMI_APP_ID   : "2882303761518398453",
+                XIAOMI_APP_KEY  : "5781839840453",
+                MEIZU_APP_ID    : "130726",
+                MEIZU_APP_KEY   : "ff4ca216e6f244ca8b7a4dd6e2ae6164",
+                HUAWEI_APP_ID   : "102212705",
+                OPPO_APP_KEY    : "179bee51bea14730bd0e59f599174ef0",
+                OPPO_APP_SECRET : "02b4a42ff686424884bf962900d55d83",
+                VIVO_APP_ID     : "103905071",
+                VIVO_APP_KEY    : "eccd3a9ee2182fd7c131cdbddefce9b9",
+                QQ_ID           : "1110010686"
+        ]
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+
+            def project = variant.applicationId
+            def separator = "_"
+            def buildType = variant.variantData.variantConfiguration.buildType.name
+            def versionName = variant.versionName
+            def versionCode = variant.versionCode
+            def formattedDate = getTime()
+            def  code = getCode()
+
+            def apkName = project + separator +buildType +separator + formattedDate+separator + "{" + versionName + separator + versionCode +separator +  code +"}" + ".apk"
+            outputFileName = apkName
+        }
+    }
+
+
+    configurations.all {
+        resolutionStrategy.eachDependency {
+            DependencyResolveDetails details ->
+                def requested = details.requested
+                if (requested.group == 'com.android.support') {
+                    if (!requested.name.startsWith("multidex")) {
+                        details.useVersion '28.0.0'
+                    }
+                }
+        }
+    }
+
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+}
+//打包时间
+def getTime() {
+    return new Date().format("yyyy_MM_dd", TimeZone.getDefault());
+}
+
+def getCode(){
+    return "AppClean"
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation 'androidx.appcompat:appcompat:1.1.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+//    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation project(':AMapTrack')
+
+    implementation project(':base_product')
+    implementation project(':Umeng_LoginShare')
+    implementation project(':agoralib')
+    implementation project(path: ':wifiCameracheck')
+    implementation 'com.yanzhenjie.recyclerview:support:1.3.2'
+}

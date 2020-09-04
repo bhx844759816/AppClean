@@ -1,0 +1,40 @@
+include ':app'
+rootProject.name = "AppClean"
+
+include ":CoreLib"
+project(":CoreLib").projectDir = new File("../../../lib/CoreLib/CoreLib")
+
+include ":messagelib"
+project(":messagelib").projectDir = new File("../../../lib/ThirdSdk/messagelib")
+
+include ":webwidget"
+project(":webwidget").projectDir = new File("../../../lib/widget/webwidget")
+
+
+include ":AMapTrack"
+project(":AMapTrack").projectDir = new File("../../widget/AMapTrack")
+
+include ":library"
+project(":library").projectDir = new File("../../widget/library")
+
+
+include ":Umeng_LoginShare"
+project(":Umeng_LoginShare").projectDir = new File("../../widget/Umeng_LoginShare")
+
+include ":alinewpay2.0"
+project(":alinewpay2.0").projectDir = new File("../../../lib/ThirdSdk/alinewpay2.0")
+
+include ":wxpay"
+project(":wxpay").projectDir = new File("../../../lib/ThirdSdk/wxpay")
+
+include ":base_product"
+project(":base_product").projectDir = new File("../../widget/base_product")
+
+include ":xrecyclerview"
+project(":xrecyclerview").projectDir = new File("../../widget/xrecyclerview")
+
+include ":wifiCameracheck"
+project(":wifiCameracheck").projectDir = new File("../../widget/wifiCameracheck")
+
+include ":agoralib"
+project(":agoralib").projectDir = new File("../../widget/agoralib")
